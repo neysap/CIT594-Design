@@ -5,30 +5,29 @@ Author: Neysa Porter
 
 What This Project Does
 
-This program reads tweet data (either from a .json or .txt file), figures out if each tweet is about the flu, matches it to a U.S. state based on its coordinates, and then counts how many flu-related tweets came from each state. It also creates a log file that lists each flu tweet along with the state it was matched to.
+This program reads tweet data (either from a .json or .txt file), determines if a tweet is flu-related, matches it to a U.S. state based on its location, and counts how many flu-related tweets came from each state. It also logs all flu tweets with their corresponding state to a log file.
 
-How It Works (Behind the Scenes)
+How It Works
 
-The project is broken up into small, focused classes that each handle one job:
+The app is modular and organized into clearly defined classes:
 
-Tweet Parsers: Read tweet data from different formats (JSON or text) and convert them into a standard format.
+Tweet Parsers – Load tweets from JSON or TXT formats into objects.
 
-State Reader: Reads the CSV file of U.S. state center coordinates.
+State Reader – Parses a CSV of state center coordinates.
 
-Location Mapper: Figures out which state a tweet belongs to based on its latitude/longitude.
+Location Mapper – Matches tweets to their nearest state based on latitude and longitude.
 
-Flu Detector: Uses a regex to check if a tweet mentions the word “flu” or “#flu”.
+Flu Detector – Detects flu-related tweets using regular expressions.
 
-Flu Analyzer: Counts how many flu tweets are mapped to each state.
+Analyzer – Tallies up flu tweet counts per state.
 
-Logger: Saves flu tweets to a .log file for future reference.
+Logger – Writes matched flu tweets to a log file.
 
-Console Output: Prints the final results to the terminal in alphabetical order by state.
+ConsolePrinter – Outputs sorted flu counts to the terminal.
 
-Everything is tied together in the Main class, which takes 3 command-line arguments: the tweet file, the state file, and the log file.
+All functionality is controlled via the Main class using command-line arguments.
 
 Sample Output
-Arkansas: 1  
 California: 1  
 Florida: 1  
 Louisiana: 2  
@@ -36,25 +35,25 @@ New Jersey: 3
 Pennsylvania: 2  
 
 
-It also generates a log file like this:
+And the generated log file might look like this:
 
 New Jersey	This flu season is the worst yet.  
 Louisiana	Feeling awful... might be the #flu.  
 
 How to Run It
 
-From your terminal:
+From the command line:
 
-# For JSON input:
-java -cp "out;json-simple-1.1.1.jar" edu.upenn.cit594.Main flu_tweets.json states.csv output.log
+# Run with JSON file:
+java -cp "out;json-simple-1.1.1.jar" edu.upenn.cit594.Main flu_tweets.json states.csv log.txt
 
-# For text input:
-java -cp "out;json-simple-1.1.1.jar" edu.upenn.cit594.Main flu_tweets.txt states.csv output.log
+# Run with TXT file:
+java -cp "out;json-simple-1.1.1.jar" edu.upenn.cit594.Main flu_tweets.txt states.csv log.txt
 
 
-Or if you’re using Codio, just click:
+Or if you’re using Codio, click:
 
-✅ Run BasicTests to check correctness
+✅ Run BasicTests to test functionality
 
 ✅ Run Your Program: JSON
 
@@ -62,33 +61,32 @@ Or if you’re using Codio, just click:
 
 Testing
 
-This project comes with a built-in test suite in BasicTests.java that checks:
+The BasicTests.java file contains automated tests to verify:
 
 Output formatting
 
-Flu detection logic
+Flu keyword detection
 
-Whether log files are being written correctly
+Proper state mapping
 
-State mapping accuracy
+Log file structure and accuracy
 
-You’ll see test results in the console and can manually inspect the generated log files.
+You’ll see console output for each test run and can manually inspect generated logs.
 
-Submission Structure
+Folder Structure
 
-Your submission folder should look like this:
+Your project should be organized like this:
 
 submit/
-├── src/
-│   └── edu/
-│       └── upenn/
-│           └── cit594/
-│               ├── datamanagement/
-│               ├── processor/
-│               ├── ui/
-│               └── util/
-└── Neysa Porter.txt  ← academic integrity statement (outside src)
+└── src/
+    └── edu/
+        └── upenn/
+            └── cit594/
+                ├── datamanagement/
+                ├── processor/
+                ├── ui/
+                └── util/
 
 Final Thoughts
 
-This project helped me reinforce key Java concepts like modular design, file parsing, regex matching, and working with coordinates. It also gave me practice designing programs that can be tested and extended easily, with clean separation of concerns.
+This project gave me hands-on experience designing a clean, testable Java application from scratch using real-world data. I worked with file parsing, regex filtering, geographic calculations, and logging — all within a modular design that made the code easier to test and extend. It’s one of my favorite early projects for demonstrating core Java skills and software design principles.
