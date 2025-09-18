@@ -1,6 +1,6 @@
 🦠 Flu Tweet Analyzer
 
-CIT 5940 – Data Structures & Software Design
+Data Structures & Software Design
 Author: Neysa Porter
 
 What This Project Does
